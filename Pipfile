@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+jupyter = "*"
+pandas = "*"
+wheel = "*"
+
+[dev-packages]
+black = {extras = ["jupyter"], version = "*"}
+isort = "*"
+
+[requires]
+python_version = "3.8"
