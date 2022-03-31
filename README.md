@@ -18,4 +18,13 @@ git config:
 *.ipynb filter=jupyternotebook
 ```
 
+### Results
+Works, but `git difftool` on `*.ipynb`-files on Windows gives this error:
+```
+[NbConvertApp] Converting notebook clean_test.ipynb to notebook
+fatal: clean_test.ipynb: smudge filter jupyternotebook failed
+```
+
+
+
 ## Using pre-commit hook
