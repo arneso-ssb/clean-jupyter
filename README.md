@@ -14,7 +14,7 @@ git config:
 
 .gitattributes:
 ```
-* text=auto
+* text eol=lf
 *.ipynb filter=jupyternotebook
 ```
 
@@ -24,7 +24,7 @@ Works, but `git difftool` on `*.ipynb`-files on Windows gives this error:
 [NbConvertApp] Converting notebook clean_test.ipynb to notebook
 fatal: clean_test.ipynb: smudge filter jupyternotebook failed
 ```
-
+Problem fixed by setting `* text eol=lf` in `.gitattributes`.
 
 
 ## Using pre-commit hook
