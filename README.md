@@ -45,12 +45,53 @@ on the machine, and not in one of the virtual environments. The virtual environm
 can change and be deleted.
 
 On Dapla and Jupyter this is not a problem, since we can install it in a common place
-in the docker image. But what about other shared Linux machines and Windows? Standardize
-installation path?
+in the docker image. The same with the Citrix image. But what about other shared Linux
+machines and Windows? Standardize installation path?
+
+If nbstripout is not installed, it should be installed with the `--user` option. That
+is:
+```
+pip install --user nbstripout
+```
+
+The gitconfig line on Windows is then something like this:
+```
+filter.nbstripout.clean=C:/Users/aei/AppData/Local/Programs/Python/Python39/python.exe -m nbstripout
+```
+
+The path to the python executable used in the gitconfig can be found like this:
+```
+python -c "import sys; print(sys.executable)"
+```
 
 Try to remove extra metadata by using:
 ```
-git config filter.nbstripout.extrakeys 'metadata.pycharm metadata.kernelspec'
+git config filter.nbstripout.extrakeys 'cell.metadata.pycharm metadata.kernelspec'
 ```
+
+git config:
+```
+[filter "nbstripout"]
+	clean = "C:/Users/aei/AppData/Local/Programs/Python/Python39/python.exe" -m nbstripout
+	smudge = cat
+	required = true
+	extrakeys = cell.metadata.pycharm metadata.kernelspec
+[diff "ipynb"]
+	textconv = "C:/Users/aei/AppData/Local/Programs/Python/Python39/python.exe" -m nbstripout -t
+```
+
+.gitattributes:
+```
+* text eol=lf
+*.ipynb filter=nbstripout
+*.ipynb diff=ipynb
+```
+
+#### Results
+Works, and removes the pycharm metadata. It also has a useful `--strip-empty-cells`
+option.
+
+There are some known problems with nbstripout and git pull, see:
+https://github.com/kynan/nbstripout/issues/108
 
 ## Using pre-commit hook
