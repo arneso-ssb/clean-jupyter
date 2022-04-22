@@ -48,6 +48,9 @@ On Dapla and Jupyter this is not a problem, since we can install it in a common 
 in the docker image. But what about other shared Linux machines and Windows? Standardize
 installation path?
 
-
+Try to remove extra metadata by using:
+```
+git config filter.nbstripout.extrakeys 'metadata.pycharm metadata.kernelspec'
+```
 
 ## Using pre-commit hook
