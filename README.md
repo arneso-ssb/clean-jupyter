@@ -39,6 +39,15 @@ Does not strip metadata like:
 ### nbstripout
 Git repo: https://github.com/kynan/nbstripout
 
+Problem with installation path: The nbstripout executable needs to be available
+for the git filter commands. That means that nbstripout should be installed globally
+on the machine, and not in one of the virtual environments. The virtual environments
+can change and be deleted.
+
+On Dapla and Jupyter this is not a problem, since we can install it in a common place
+in the docker image. But what about other shared Linux machines and Windows? Standardize
+installation path?
+
 
 
 ## Using pre-commit hook
