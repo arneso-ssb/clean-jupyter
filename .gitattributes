@@ -1,2 +1,7 @@
 * text eol=lf
-*.ipynb filter=jupyternotebook
+*.ipynb filter=nbstripout
+
+#*.ipynb filter=jupyternotebook
+
+*.zpln filter=nbstripout
+*.ipynb diff=ipynb

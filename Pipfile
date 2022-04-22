@@ -11,6 +11,7 @@ wheel = "*"
 [dev-packages]
 black = {extras = ["jupyter"], version = "*"}
 isort = "*"
+nbstripout = "*"
 
 [requires]
 python_version = "3.8"
