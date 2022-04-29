@@ -48,11 +48,11 @@ On Dapla and Jupyter this is not a problem, since we can install it in a common 
 in the docker image. The same with the Citrix image. But what about other shared Linux
 machines and Windows? Standardize installation path?
 
-If nbstripout is not installed, it should be installed with the `--user` option. That
-is:
-```
-pip install --user nbstripout
-```
+On Linux: Install with system python3: `pip install nbstripout` (needs sudo
+permissions). Then invoke with `/usr/bin/python3 -m nbstripout` 
+
+On Windows (local PC): Install with the `--user` option. That is:
+`pip install --user nbstripout`
 
 The gitconfig line on Windows is then something like this:
 ```
@@ -95,3 +95,7 @@ There are some known problems with nbstripout and git pull, see:
 https://github.com/kynan/nbstripout/issues/108
 
 ## Using pre-commit hook
+You need to add the file twice. And seems more complicated for a novice end user.
+
+# Preliminary conclusion
+Use .gitattributes and .gitconfig with nbstripout as described above.
