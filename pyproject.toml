@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "clean-jupyter"
+version = "0.1.0"
+description = "Test cleaning of Jupyter Notebooks"
+authors = ["Arne Sørli <81353974+arneso-ssb@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "clean_jupyter"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+wheel = "^0.37.1"
+jupyterlab = "^3.4.5"
+psutil = "==5.9.1"
+pandas = "^1.4.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
